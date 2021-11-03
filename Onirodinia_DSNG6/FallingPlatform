@@ -1,0 +1,58 @@
+// FallingPlatform .
+// Adicione uma plataforma ao cenário. No "inspector" marque-a como "Ground", depois atribua a ela um 
+// "RigidBody2D" (para adicionar gravidade a plataforma) e também um "TargetJoint2D". 
+// Importante: trave o eixo "z" (função "Freeze Rotation") para dar sustentabilidade a plataforma.
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FallingPlatform : MonoBehaviour
+
+{
+    public float fallingTime; // Variável usada para cronometrar o tempo. (Obs1)
+    private TargetJoint2D target; 
+    private BoxColider2D boxColl;
+
+    void Start()
+    {
+        target = GetComponent<TargetJoint2D>(); 
+        boxColl = GetComponent<BoxColider2D>(); 
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")  // Obs3
+        {                                         // Quando o jogador bater na plataforma, a função "Falling" 
+            Invoke("Falling", fallingTime);       // vai ser chamada depois de um determinado periodo de tempo.
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.layer == x)       //Obs4  
+        {                                         
+            Destroy(gameObject);                 //Obs5  
+        }
+    }
+
+    void Falling()
+    {
+        target.enable = false;      // Desativa o TargetJoint.
+        boxColl.isTrigger = true;   // Ativa o "is trigger" do BoxCollider.
+    }
+
+} 
+
+// Obs1: "fallingTime". A variável pode ter o tempo auterado dentro do Unity após a adição do Script.  
+
+// Obs2: Dentro do Unity no "RigidBody2D" da plataforma em "Gravity Sacale", a gravidade da plataforma deve ser 
+// auterada para uma maior que a do personagem (Assim a plataforma cairá antes do personagem).
+
+// Obs3: No Unity, o personagem deve receber uma tag com o nome "Player" para o código funcionar.     
+
+// Obs4: No código adicione ao "x" o número da "layer" da plataforma. 
+
+//Obs5: Crie um objeto vazio, adicione apenas um "BoxCollider", depois atribua uma "layer".
