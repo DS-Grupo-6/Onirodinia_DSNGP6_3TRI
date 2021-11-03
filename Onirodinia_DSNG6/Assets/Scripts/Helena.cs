@@ -10,6 +10,9 @@ public class Helena : MonoBehaviour
     private SpriteRenderer sprite;
 
     public float Speed;
+    public float WalkSpeed;
+    public float RunSpeed;
+    public bool IsRunning = false;
     public float JumpForce;
     public bool IsJumping;
     public bool DoubleJump;
@@ -43,21 +46,49 @@ public class Helena : MonoBehaviour
     void Move()
     {
         try{
+            if(Input.GetKeyDown(KeyCode.LeftShift)){
+                Speed = RunSpeed;
+                //IsWalking = false;
+                IsRunning = true;
+                //Alterar para variavel animacao run
+            }
+            if(Input.GetKeyUp(KeyCode.LeftShift)){
+                Speed = WalkSpeed;
+                //IsWalking = true;
+                IsRunning = false;
+                //Alterar para variavel animacao walking
+            }
+
             Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
             transform.position += movement * Time.deltaTime * Speed;
             //Direita
             if(Input.GetAxis("Horizontal") > 0f){
-                anim.SetBool("walking", true);
+                if(IsRunning){
+                    anim.SetBool("run", true);
+                    anim.SetBool("walking", false);
+                }
+                else{
+                    anim.SetBool("walking", true);
+                    anim.SetBool("run", false);
+                }
                 transform.eulerAngles = new Vector3(0f,0f,0f);
             }
             //Esquerda
             if(Input.GetAxis("Horizontal") < 0f){
-               anim.SetBool("walking", true);
+                if(IsRunning){
+                    anim.SetBool("run", true);
+                    anim.SetBool("walking", false);
+                }
+                else{
+                    anim.SetBool("walking", true);
+                    anim.SetBool("run", false);
+                }
                 transform.eulerAngles = new Vector3(0f,180f,0f);
             }
             //Parado
             if(Input.GetAxis("Horizontal") == 0f){
                 anim.SetBool("walking", false);
+                anim.SetBool("run", false);
             }
         }
         catch(Exception e){

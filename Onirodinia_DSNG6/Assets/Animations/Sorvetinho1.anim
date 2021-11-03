@@ -6,11 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Onirodinia_DSNG6/Assets/Animations/Helena_walk.anim
-  m_Name: Helena_walk
-=======
   m_Name: Sorvetinho1
->>>>>>> 3c42a7d3bba9748b3413c4420add928ca21a5a95:Onirodinia_DSNG6/Assets/Animations/Sorvetinho1.anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
