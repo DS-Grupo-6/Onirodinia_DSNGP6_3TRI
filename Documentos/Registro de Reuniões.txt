@@ -1,12 +1,18 @@
-Registro de Reuni�es
+Registro de Reuniões
 
 
 -03/11/2021(quarta-feira, 08:00)
 
-Reunimos para come�ar as divis�es do projeto integrado
+Reunimos para começar as divisões do projeto integrado
 
 
 
 -04/11/2021(quinta-feira, 08:00)
 
 Cada um ficou fazendo sua parte do projeto
+
+
+-10/11/2021(quarta-feira, 10:00)
+Fizemos algumas modificações nos sprites e testamos animações.
+
+
