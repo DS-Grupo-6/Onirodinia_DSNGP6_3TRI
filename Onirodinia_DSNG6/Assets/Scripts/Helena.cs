@@ -9,6 +9,8 @@ public class Helena : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
+    public AudioSource soundDigitacao, soundDamage, soundJump, soundColetaSorvete, soundHidrantche, soundDeath, soundWalk;
+
     public float Speed;
     public float WalkSpeed;
     public float RunSpeed;
@@ -28,6 +30,14 @@ public class Helena : MonoBehaviour
             rig = GetComponent<Rigidbody2D>(); 
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+
+            soundDigitacao = GetComponent<AudioSource>();
+            soundDamage = GetComponent<AudioSource>();
+            soundJump = GetComponent<AudioSource>();
+            soundColetaSorvete = GetComponent<AudioSource>();
+            soundHidrantche = GetComponent<AudioSource>();
+            soundDeath = GetComponent<AudioSource>();
+            soundWalk = GetComponent<AudioSource>();
         }
         catch(Exception e){
             Debug.Log("Erro: "+ e);
@@ -66,10 +76,12 @@ public class Helena : MonoBehaviour
                 if(IsRunning){
                     anim.SetBool("run", true);
                     anim.SetBool("walking", false);
+                    soundWalk.Play();
                 }
                 else{
                     anim.SetBool("walking", true);
                     anim.SetBool("run", false);
+                    soundWalk.Play();
                 }
                 transform.eulerAngles = new Vector3(0f,0f,0f);
             }
@@ -105,6 +117,7 @@ public class Helena : MonoBehaviour
                 if(!IsJumping)
                 {
                     rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+                    soundJump.Play();
                 }
                 else
                 {
@@ -177,7 +190,7 @@ public class Helena : MonoBehaviour
         StartCoroutine (Damage());
 
         if (health < 1){
-            
+            soundDeath.Play();
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Over");
         }
     }
