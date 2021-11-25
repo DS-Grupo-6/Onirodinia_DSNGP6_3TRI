@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Hidrantche : MonoBehaviour
 {
-    //private Animator anim;
+    private Animator anim;
     public float jumpForce; // Variavel alteravel dentro do unity
     
     void Start()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -17,8 +17,12 @@ public class Hidrantche : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
-            //anim.SetTrigger("jump");
+            anim.SetBool("jump", true);
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
+    }
+
+    void OnCollisionExit2D(Collision2D collision) {
+        anim.SetBool("jump", false);        
     }
 }
