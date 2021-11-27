@@ -9,10 +9,12 @@ public class Atormentado : MonoBehaviour
     private Animator anim;
     public float Speed;
     public float StoppingDistance;
+    public float InitialDistance;
     private Transform Target;
     public int InitialHealth;
     private int Health;
     public int TimeHealth;
+    public bool CanMove = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +41,13 @@ public class Atormentado : MonoBehaviour
 
     void Move()
     {
-        if(Vector2.Distance(transform.position, Target.position) > StoppingDistance)
+        if(Vector2.Distance(transform.position, Target.position) > InitialDistance){
+            CanMove = true;
+        }
+        if((CanMove)&&(Vector2.Distance(transform.position, Target.position) > StoppingDistance))
         {
             transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
+            Debug.Log(Target.position);
         }
     }
 
