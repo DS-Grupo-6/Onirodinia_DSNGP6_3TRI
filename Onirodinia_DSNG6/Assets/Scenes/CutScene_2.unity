@@ -217,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogoTotal
       objectReference: {fileID: 0}
+    - target: {fileID: 5456220445370559065, guid: f29eae8ca071be44e8804681618c59c9, type: 3}
+      propertyPath: tempoDigitacao
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5456220446516992934, guid: f29eae8ca071be44e8804681618c59c9, type: 3}
       propertyPath: Fundo1
       value: 
