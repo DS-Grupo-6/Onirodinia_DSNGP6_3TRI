@@ -1543,11 +1543,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 416589920426696228, guid: 0079babe2d46b7e41ac2d98b688f6a4b, type: 3}
+      propertyPath: TimeWait
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416589920426696228, guid: 0079babe2d46b7e41ac2d98b688f6a4b, type: 3}
       propertyPath: TimeHealth
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 416589920426696228, guid: 0079babe2d46b7e41ac2d98b688f6a4b, type: 3}
       propertyPath: InitialHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416589920426696228, guid: 0079babe2d46b7e41ac2d98b688f6a4b, type: 3}
+      propertyPath: InitialDistance
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 416589920426696228, guid: 0079babe2d46b7e41ac2d98b688f6a4b, type: 3}

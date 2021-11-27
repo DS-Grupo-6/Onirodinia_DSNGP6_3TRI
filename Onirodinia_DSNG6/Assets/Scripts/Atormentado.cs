@@ -7,6 +7,7 @@ public class Atormentado : MonoBehaviour
 {
     private Rigidbody2D rig;
     private Animator anim;
+    private Helena Player;
     public float Speed;
     public float StoppingDistance;
     public float InitialDistance;
@@ -15,6 +16,9 @@ public class Atormentado : MonoBehaviour
     private int Health;
     public int TimeHealth;
     public bool CanMove = false;
+    public bool ColisaoPlayer = false;
+    public bool Ataque = false;
+    public int TimeWait;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,7 @@ public class Atormentado : MonoBehaviour
             rig = GetComponent<Rigidbody2D>(); 
             anim = GetComponent<Animator>();
             Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Helena> ();
 
             Health = InitialHealth;
             StartCoroutine(Damage());
@@ -41,13 +46,11 @@ public class Atormentado : MonoBehaviour
 
     void Move()
     {
-        if(Vector2.Distance(transform.position, Target.position) > InitialDistance){
+        if(Vector2.Distance(transform.position, Target.position) < InitialDistance){
             CanMove = true;
         }
-        if((CanMove)&&(Vector2.Distance(transform.position, Target.position) > StoppingDistance))
-        {
-            transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
-            Debug.Log(Target.position);
+        if((CanMove)&&(!Ataque)){
+            StartCoroutine(Atack());
         }
     }
 
@@ -59,9 +62,54 @@ public class Atormentado : MonoBehaviour
         }        
     }
 
+    IEnumerator Atack()
+    {
+        if((CanMove)&&(Vector2.Distance(transform.position, Target.position) > StoppingDistance)){
+            anim.SetBool("atack", true);
+            transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
+            if(ColisaoPlayer){
+                if(!Player.invunerable){
+                    Player.DamagePlayer();
+                }
+                Ataque = true;
+                CanMove = false;
+                anim.SetBool("atack", false);    
+                yield return new WaitForSeconds(TimeWait);
+                CanMove = true;
+                Ataque = false;
+            }
+        }
+    }
+
     void Death(){
         if(Health<=0){
             UnityEngine.SceneManagement.SceneManager.LoadScene("CutScene_2");
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        try{
+            if(collision.gameObject.tag == "Player")
+            {
+                ColisaoPlayer = true;
+            }
+        }
+        catch(Exception e){
+            Debug.Log("Erro: "+ e);
+
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        try{
+            if(collision.gameObject.tag == "Player")
+            {
+                ColisaoPlayer = false;
+            }
+        }
+        catch(Exception e){
+            Debug.Log("Erro: "+ e);
+
         }
     }
 }
