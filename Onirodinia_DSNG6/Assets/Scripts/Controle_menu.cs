@@ -5,10 +5,21 @@ using UnityEngine;
 public class Controle_menu : MonoBehaviour
 {
     public GameObject menu;
-    private bool estadoMenu;
+    public GameObject vericacaoSair;
+    public bool estadoMenu = false;
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            MenuPause();
+        }        
+    }
 //Iniciar cut scene da fase 1
     public void IniciarFase1(){ 
         UnityEngine.SceneManagement.SceneManager.LoadScene("CutScene1");
+    }
+    //Iniciar tela menu inicia
+    public void IniciarMenuInicial(){ 
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 //Fecha o jogo
     public void FecharJogo()
@@ -16,7 +27,7 @@ public class Controle_menu : MonoBehaviour
         Application.Quit();
     } 
 //Maxima e minimiza a barra de menu
-    public void BarraMenu()
+    public void MenuPause()
     {
         if(!estadoMenu){
             menu.SetActive(true);
@@ -25,6 +36,15 @@ public class Controle_menu : MonoBehaviour
         else{
             menu.SetActive(false);
             estadoMenu = false;
+        }
+    }
+//Verifica se o usuario quer ou não fechar o jogo
+    public void VerificacaoSair(bool estado){
+        if (estado){
+            vericacaoSair.SetActive(true);
+        }
+        else{
+            vericacaoSair.SetActive(false);
         }
     }
 }

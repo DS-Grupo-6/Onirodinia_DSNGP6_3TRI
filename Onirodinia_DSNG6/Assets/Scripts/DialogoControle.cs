@@ -8,13 +8,23 @@ public class DialogoControle : MonoBehaviour
     //Componentes
     public GameObject objDialogo;
     public Image personagem;
+    public Image imagemFundo;
     public Text txtFala;
     public Text txtNomePersonagem;
+    private DialogoCS dialogo;
 
     //Configuracoes
     public float tempoDigitacao;
     private string[] sentenca;
     private int index;
+    void Start()
+    {
+        dialogo = FindObjectOfType<DialogoCS>();
+    }
+//Funcao mudar fundo
+    public void MudarFundo(Sprite fundo){
+        this.imagemFundo.sprite = fundo;
+    }
 //Funcao apresentar as falas
     public void Fala(Sprite pers, string[] txt, string nome)
     {
@@ -40,11 +50,16 @@ public class DialogoControle : MonoBehaviour
         if(this.txtFala.text == this.sentenca[index])
         {
             //Verifica se ainda ha txt
-            if(index < this.sentenca.Length - 1)
+            if((index < this.sentenca.Length - 1)&&(this.sentenca[index+1] != ""))
             {
                 index++;
                 this.txtFala.text = "";
                 StartCoroutine(DigitarSentenca());
+            }
+            else if(dialogo.falasRestantes > 0){
+                this.txtFala.text = "";
+                this.index = 0;
+                dialogo.IniciarDialogo();
             }
             //Quando acabar txt
             else
@@ -59,6 +74,11 @@ public class DialogoControle : MonoBehaviour
         this.txtFala.text = "";
         this.index = 0;
         objDialogo.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+        if(dialogo.numeroCutScene == 1){
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+        }
+        else if(dialogo.numeroCutScene == 2){
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+        }        
     }
 }

@@ -8,6 +8,7 @@ public class Helena : MonoBehaviour
     private Rigidbody2D rig;
     private Animator anim;
     private SpriteRenderer sprite;
+    private Controle_menu controleMenu;
 
     public AudioSource soundDigitacao, soundDamage, soundJump, soundColetaSorvete, soundHidrantche, soundDeath, soundWalk;
 
@@ -30,6 +31,7 @@ public class Helena : MonoBehaviour
             rig = GetComponent<Rigidbody2D>(); 
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+            controleMenu =  GameObject.Find("ControleMenu").GetComponent<Controle_menu> ();
 
             soundDigitacao = GetComponent<AudioSource>();
             soundDamage = GetComponent<AudioSource>();
@@ -48,8 +50,10 @@ public class Helena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Jump();
+        if(!controleMenu.estadoMenu){
+            Move();
+            Jump();
+        }
     }
 
 //Controle movimento andar
