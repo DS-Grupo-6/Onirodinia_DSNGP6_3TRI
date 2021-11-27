@@ -9,9 +9,9 @@ public class Nextlvl_Point : MonoBehaviour
 
    void OnCollisionEnter2D(Collision2D collision) {
 
-       if(collision.gameObject.tag == "Helena")
+       if(collision.gameObject.tag == "Player")
        {
-            SceneManager.LoadScene(lvlName);
+          SceneManager.LoadScene(lvlName);
        }
       
   }

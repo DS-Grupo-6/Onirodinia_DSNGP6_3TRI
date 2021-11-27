@@ -6,20 +6,23 @@ public class Controle_menu : MonoBehaviour
 {
     public GameObject menu;
     public GameObject vericacaoSair;
+    //public Controle_Game_Over cgo;
     public bool estadoMenu = false;
+    void Start(){
+        //cgo = FindObjectOfType<Controle_Game_Over>();
+    }
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
             MenuPause();
-        }        
+        }
+        /*if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Game_Over"){
+            cgo.CenaAtual = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        }*/     
     }
-//Iniciar cut scene da fase 1
-    public void IniciarFase1(){ 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CutScene1");
-    }
-    //Iniciar tela menu inicia
-    public void IniciarMenuInicial(){ 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+//Iniciar cena
+    public void IniciarCena(string cena){ 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(cena);
     }
 //Fecha o jogo
     public void FecharJogo()
