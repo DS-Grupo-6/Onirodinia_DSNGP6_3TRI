@@ -8,6 +8,8 @@ public class Helena : MonoBehaviour
     private Rigidbody2D rig;
     private Animator anim;
     private SpriteRenderer sprite;
+    private Controle_menu controleMenu;
+    private ControleGameOver controleGameOver;
 
     public AudioSource soundWalk, soundJump, soundDamage; //soundDeath, soundWalk;
 
@@ -30,6 +32,8 @@ public class Helena : MonoBehaviour
             rig = GetComponent<Rigidbody2D>(); 
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+            controleMenu = GameObject.Find("ControleMenu").GetComponent<Controle_menu> ();
+            controleGameOver = GameObject.Find("GameOver").GetComponent<ControleGameOver> ();
 
         }
         catch(Exception e){
@@ -49,8 +53,10 @@ public class Helena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Jump();
+        if(!controleMenu.estadoMenu){
+            Move();
+            Jump();
+        }
     }
 
 //Controle movimento andar
@@ -194,7 +200,12 @@ public class Helena : MonoBehaviour
         StartCoroutine (Damage());
 
         if (health < 1){
+<<<<<<< HEAD
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Over");
+=======
+            //soundDeath.Play();
+            controleGameOver.GameOver();
+>>>>>>> ee2359a75da0d4015211bb1e6e193cbcc1c44874
         }
     }
    //Adiciona vida 
