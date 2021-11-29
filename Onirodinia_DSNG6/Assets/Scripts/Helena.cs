@@ -9,14 +9,7 @@ public class Helena : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private Controle_menu controleMenu;
-<<<<<<< HEAD
-    public AudioSource soundDigitacao, soundDamage, soundJump, soundColetaSorvete, soundHidrantche, soundDeath, soundWalk;
-=======
-    private ControleGameOver controleGameOver;
-
     public AudioSource soundWalk, soundJump, soundDamage; //soundDeath, soundWalk;
->>>>>>> 1ca45ad20aa30788111c63a3f1ae8c1eddc0e423
-
     public float Speed;
     public float WalkSpeed;
     public float RunSpeed;
@@ -203,16 +196,7 @@ public class Helena : MonoBehaviour
         StartCoroutine (Damage());
 
         if (health < 1){
-<<<<<<< HEAD
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Over");
-=======
-            //soundDeath.Play();
-<<<<<<< HEAD
             controleMenu.GameOver();
-=======
-            controleGameOver.GameOver();
->>>>>>> ee2359a75da0d4015211bb1e6e193cbcc1c44874
->>>>>>> 1ca45ad20aa30788111c63a3f1ae8c1eddc0e423
         }
     }
    //Adiciona vida 
