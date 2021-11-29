@@ -75,10 +75,10 @@ public class DialogoControle : MonoBehaviour
         this.index = 0;
         objDialogo.SetActive(false);
         if(dialogo.numeroCutScene == 1){
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_0");
         }
         else if(dialogo.numeroCutScene == 2){
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
         }        
     }
 }

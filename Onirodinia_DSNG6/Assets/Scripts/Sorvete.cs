@@ -8,6 +8,7 @@ public class Sorvete : MonoBehaviour
 
 	private SpriteRenderer spriteRenderer;
 	private CapsuleCollider2D capsuleCollider2D;
+	private AudioSource sound;
 	public GameObject efeitoColeta;
 	private Helena player;
 	public int numHealth;
@@ -20,11 +21,16 @@ public class Sorvete : MonoBehaviour
 		player = GameObject.Find("Helena").GetComponent<Helena> ();
     }
 
+	 void Awake() 
+    {
+        sound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collider){
 
     	//Se o jogador encostar no item
     	if(collider.gameObject.layer == 10){
-
+			sound.Play();
     		//desabilita o render e a colisão do objeto
     		spriteRenderer.enabled = false;
     		capsuleCollider2D.enabled = false;
@@ -33,7 +39,7 @@ public class Sorvete : MonoBehaviour
     		efeitoColeta.SetActive(true);
 
     		//destroi o item após 300ms
-    		Destroy(gameObject, 0.3f);
+    		Destroy(this.gameObject, 0.5f);
 
 			//adiciona uma vida
 			player.LifePlayer(numHealth);

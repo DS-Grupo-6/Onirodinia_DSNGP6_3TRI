@@ -15,9 +15,9 @@ public class Atormentado : MonoBehaviour
     public int InitialHealth;
     private int Health;
     public int TimeHealth;
-    public bool CanMove = false;
-    public bool ColisaoPlayer = false;
-    public bool Ataque = false;
+    private bool CanMove = false;
+    private bool ColisaoPlayer = false;
+    private bool Ataque = false;
     public int TimeWait;
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,12 @@ public class Atormentado : MonoBehaviour
         }
         if((CanMove)&&(!Ataque)){
             StartCoroutine(Atack());
+        }
+        if(transform.position.x < Target.position.x){
+            transform.eulerAngles = new Vector3(0f,0f,0f);
+        }
+        else{
+            transform.eulerAngles = new Vector3(0f,180f,0f);
         }
     }
 

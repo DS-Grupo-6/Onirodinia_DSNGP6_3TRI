@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Controle_Game_Over : MonoBehaviour
 {
+    public string CenaAtual;
     //Verifica se "F" foi pressionada e inicia fase 1
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Fase_1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(CenaAtual);
         }
     }
 }

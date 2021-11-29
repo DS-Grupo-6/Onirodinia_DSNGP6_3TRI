@@ -6,20 +6,23 @@ public class Controle_menu : MonoBehaviour
 {
     public GameObject menu;
     public GameObject vericacaoSair;
+    public GameObject TelaGameOver;
     public bool estadoMenu = false;
+    public bool IsGameOver = false;
+    private string CenaAtual;
+    void Start(){
+        CenaAtual = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+    }
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
             MenuPause();
-        }        
+        }
+        Reiniciar();   
     }
-//Iniciar cut scene da fase 1
-    public void IniciarFase1(){ 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CutScene1");
-    }
-    //Iniciar tela menu inicia
-    public void IniciarMenuInicial(){ 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+//Iniciar cena
+    public void IniciarCena(string cena){ 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(cena);
     }
 //Fecha o jogo
     public void FecharJogo()
@@ -45,6 +48,20 @@ public class Controle_menu : MonoBehaviour
         }
         else{
             vericacaoSair.SetActive(false);
+        }
+    }
+    public void GameOver(){
+        if(!IsGameOver){
+            TelaGameOver.SetActive(true);
+            IsGameOver = true;
+        }
+    }
+    public void Reiniciar(){
+        if((Input.GetKeyDown(KeyCode.F))&&(IsGameOver))
+        {
+            TelaGameOver.SetActive(false);
+            IsGameOver = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(CenaAtual);
         }
     }
 }
