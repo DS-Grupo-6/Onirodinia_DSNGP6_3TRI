@@ -8,6 +8,7 @@ public class Atormentado : MonoBehaviour
     private Rigidbody2D rig;
     private Animator anim;
     private Helena Player;
+    private Controle_menu controleMenu;
     public float Speed;
     public float StoppingDistance;
     public float InitialDistance;
@@ -27,6 +28,7 @@ public class Atormentado : MonoBehaviour
             anim = GetComponent<Animator>();
             Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Helena> ();
+            controleMenu = GameObject.Find("ControleMenu").GetComponent<Controle_menu> ();
 
             Health = InitialHealth;
             StartCoroutine(Damage());
@@ -40,8 +42,10 @@ public class Atormentado : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Death();       
+        if(!controleMenu.IsGameOver){
+            Move();
+            Death();
+        }       
     }
 
     void Move()
