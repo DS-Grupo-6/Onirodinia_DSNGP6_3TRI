@@ -38,8 +38,6 @@ public class DialogoCS : MonoBehaviour
         cd.MudarFundo(Fundo2);
         yield return new WaitForSeconds(5);
         cd.MudarFundo(Fundo3);
-        yield return new WaitForSeconds(5);
-        cd.MudarFundo(Fundo4);
 
         if(falasRestantes == 0){
             txtFala[0] = "O que tá acontecendo aqui?... Como tudo ficou assim? Agora pouco tava tudo certo. Será que isso é tipo aquelas histórias de sete além?";
@@ -52,7 +50,7 @@ public class DialogoCS : MonoBehaviour
     }
 
     IEnumerator DialogoCutScene2(){
-        cd.MudarFundo(Fundo5);
+        cd.MudarFundo(Fundo4);
         yield return new WaitForSeconds(1);
 
         if(falasRestantes == 9){

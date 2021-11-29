@@ -142,7 +142,7 @@ public class Helena : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         try{
-            if((collision.gameObject.layer == 8)||(collision.gameObject.layer == 9)||(collision.gameObject.layer == 11)||(collision.gameObject.layer == 12))
+            if((collision.gameObject.layer == 8)||(collision.gameObject.layer == 9)||(collision.gameObject.layer == 12))
             {
                 IsJumping = false;
                 DoubleJump = true;
@@ -159,7 +159,7 @@ public class Helena : MonoBehaviour
     void OnCollisionExit2D(Collision2D collision)
     {
         try{
-            if((collision.gameObject.layer == 8)||(collision.gameObject.layer == 9)||(collision.gameObject.layer == 11)||(collision.gameObject.layer == 12))
+            if((collision.gameObject.layer == 8)||(collision.gameObject.layer == 9)||(collision.gameObject.layer == 12))
             {
                 IsJumping = true;
                 anim.SetBool("jump", true);

@@ -12,6 +12,7 @@ public class DialogoControle : MonoBehaviour
     public Text txtFala;
     public Text txtNomePersonagem;
     private DialogoCS dialogo;
+    public AudioSource somDigitacao;
 
     //Configuracoes
     public float tempoDigitacao;
@@ -37,6 +38,7 @@ public class DialogoControle : MonoBehaviour
 //Apresentar letra a letra no dialogo
     IEnumerator DigitarSentenca()
     {
+        somDigitacao.Play();
         foreach (char letras in this.sentenca[index].ToCharArray())
         {
             this.txtFala.text += letras;
