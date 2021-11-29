@@ -9,8 +9,6 @@ public class Helena : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private Controle_menu controleMenu;
-    private ControleGameOver controleGameOver;
-
     public AudioSource soundDigitacao, soundDamage, soundJump, soundColetaSorvete, soundHidrantche, soundDeath, soundWalk;
 
     public float Speed;
@@ -33,7 +31,6 @@ public class Helena : MonoBehaviour
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
             controleMenu = GameObject.Find("ControleMenu").GetComponent<Controle_menu> ();
-            controleGameOver = GameObject.Find("GameOver").GetComponent<ControleGameOver> ();
 
             soundDigitacao = GetComponent<AudioSource>();
             soundDamage = GetComponent<AudioSource>();
@@ -52,7 +49,7 @@ public class Helena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!controleMenu.estadoMenu){
+        if((!controleMenu.estadoMenu)&&(!controleMenu.IsGameOver)){
             Move();
             Jump();
         }
@@ -197,7 +194,7 @@ public class Helena : MonoBehaviour
 
         if (health < 1){
             //soundDeath.Play();
-            controleGameOver.GameOver();
+            controleMenu.GameOver();
         }
     }
    //Adiciona vida 
