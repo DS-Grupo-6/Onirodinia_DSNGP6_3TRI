@@ -9,7 +9,13 @@ public class Helena : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private Controle_menu controleMenu;
+<<<<<<< HEAD
     public AudioSource soundDigitacao, soundDamage, soundJump, soundColetaSorvete, soundHidrantche, soundDeath, soundWalk;
+=======
+    private ControleGameOver controleGameOver;
+
+    public AudioSource soundWalk, soundJump, soundDamage; //soundDeath, soundWalk;
+>>>>>>> 1ca45ad20aa30788111c63a3f1ae8c1eddc0e423
 
     public float Speed;
     public float WalkSpeed;
@@ -32,18 +38,19 @@ public class Helena : MonoBehaviour
             sprite = GetComponent<SpriteRenderer>();
             controleMenu = GameObject.Find("ControleMenu").GetComponent<Controle_menu> ();
 
-            soundDigitacao = GetComponent<AudioSource>();
-            soundDamage = GetComponent<AudioSource>();
-            soundJump = GetComponent<AudioSource>();
-            soundColetaSorvete = GetComponent<AudioSource>();
-            soundHidrantche = GetComponent<AudioSource>();
-            soundDeath = GetComponent<AudioSource>();
-            soundWalk = GetComponent<AudioSource>();
         }
         catch(Exception e){
             Debug.Log("Erro: "+ e);
 
         }
+    }
+
+    void Awake()
+    {
+            // soundDamage = GetComponent<AudioSource>();
+            //soundJump = GetComponent<AudioSource>();
+            //soundDeath = GetComponent<AudioSource>();
+            //soundWalk = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -79,13 +86,12 @@ public class Helena : MonoBehaviour
                 if(IsRunning){
                     anim.SetBool("run", true);
                     anim.SetBool("walking", false);
-                    soundWalk.Play();
                 }
                 else{
                     anim.SetBool("walking", true);
                     anim.SetBool("run", false);
-                    soundWalk.Play();
                 }
+                soundWalk.Play();
                 transform.eulerAngles = new Vector3(0f,0f,0f);
             }
             //Esquerda
@@ -98,12 +104,14 @@ public class Helena : MonoBehaviour
                     anim.SetBool("walking", true);
                     anim.SetBool("run", false);
                 }
+                soundWalk.Play();
                 transform.eulerAngles = new Vector3(0f,180f,0f);
             }
             //Parado
             if(Input.GetAxis("Horizontal") == 0f){
                 anim.SetBool("walking", false);
                 anim.SetBool("run", false);
+                soundWalk.Stop();
             }
         }
         catch(Exception e){
@@ -117,10 +125,10 @@ public class Helena : MonoBehaviour
         try{
             if(Input.GetButtonDown("Jump"))
             {
+                soundJump.Play();
                 if(!IsJumping)
                 {
                     rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-                    soundJump.Play();
                 }
                 else
                 {
@@ -146,6 +154,7 @@ public class Helena : MonoBehaviour
                 IsJumping = false;
                 DoubleJump = true;
                 anim.SetBool("jump", false);
+                soundJump.Stop();
             }
         }
         catch(Exception e){
@@ -188,13 +197,22 @@ public class Helena : MonoBehaviour
 //Recebe dano
     public void DamagePlayer(){
 
+        soundDamage.Play();
         invunerable = true;
         health--;
         StartCoroutine (Damage());
 
         if (health < 1){
+<<<<<<< HEAD
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Over");
+=======
             //soundDeath.Play();
+<<<<<<< HEAD
             controleMenu.GameOver();
+=======
+            controleGameOver.GameOver();
+>>>>>>> ee2359a75da0d4015211bb1e6e193cbcc1c44874
+>>>>>>> 1ca45ad20aa30788111c63a3f1ae8c1eddc0e423
         }
     }
    //Adiciona vida 
