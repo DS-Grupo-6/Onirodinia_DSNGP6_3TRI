@@ -424,7 +424,7 @@ Transform:
   - {fileID: 1691957056}
   - {fileID: 1635227864}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386181668
 GameObject:
@@ -562,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111052227544255044, guid: 7a7f788416312884caf3d75da8fc6e8d, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7111052227544255044, guid: 7a7f788416312884caf3d75da8fc6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4899605887941154184, guid: 832b890e6b44d994394ca5897be425d1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4899605887941154184, guid: 832b890e6b44d994394ca5897be425d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6546,7 +6546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1265181844 stripped
 AudioSource:
@@ -10391,7 +10391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 296550329192115913, guid: e8ff02df00573c74bb47a03195325c5f, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 296550329192115913, guid: e8ff02df00573c74bb47a03195325c5f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10564,7 +10564,7 @@ RectTransform:
   m_Children:
   - {fileID: 604862585}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -13,7 +13,7 @@ public class Atormentado : MonoBehaviour
     public float InitialDistance;
     private Transform Target;
     public int InitialHealth;
-    private int Health;
+    public int Health;
     public int TimeHealth;
     private bool CanMove = false;
     private bool ColisaoPlayer = false;
