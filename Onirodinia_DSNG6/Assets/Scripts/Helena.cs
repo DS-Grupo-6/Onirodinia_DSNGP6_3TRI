@@ -149,6 +149,10 @@ public class Helena : MonoBehaviour
                 anim.SetBool("jump", false);
                 soundJump.Stop();
             }
+            if(collision.gameObject.layer == 7){
+                health = 0; 
+                controleMenu.GameOver();
+            }
         }
         catch(Exception e){
             Debug.Log("Erro: "+ e);
