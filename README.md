@@ -9,6 +9,8 @@ mas logo descobre que as coisas nesse mundo estão bem piores do que ela imagina
 terá que derrotar a tirania da imperatriz Aneleh.
    
    Durante as fases Helena enfrenta perigos,utilizando de suas habilidades para combate-los e aprendendo novas no processo com o objetivo de descobrir um metódo de sair dessa realidade e voltar para sua casa.
+   
+   Trailer: https://youtu.be/qh5r0_YxgCc
   
           Como jogar
 
