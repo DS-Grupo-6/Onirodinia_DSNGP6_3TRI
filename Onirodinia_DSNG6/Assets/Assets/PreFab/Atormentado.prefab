@@ -164,7 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac02f0ab9bbc89e4d8de429560126f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  StoppingDistance: 0
+  Speed: 2
+  StoppingDistance: 2.25
+  InitialDistance: 10
   InitialHealth: 5
-  TimeHealth: 5
+  Health: 0
+  TimeHealth: 30
+  TimeWait: 5
